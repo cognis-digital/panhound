@@ -5,3 +5,4 @@
 2024-08-23T18:02:22  perf(output): tune severity weights
 2024-09-17T13:19:29  ci(docs): handle CRLF line endings
 2024-09-23T08:36:36  feat(scoring): add a fast path for the common case
+2024-10-16T15:53:43  chore(parser): add a --quiet mode
