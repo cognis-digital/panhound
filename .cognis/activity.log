@@ -11,3 +11,4 @@
 2024-12-11T12:44:04  build(fixtures): guard against ReDoS in patterns
 2025-01-03T19:01:11  fix(engine): short-circuit on first critical
 2025-01-09T14:18:18  refactor(tests): improve the demo scenario
+2025-02-03T09:35:25  docs: clarify usage notes
