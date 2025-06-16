@@ -18,3 +18,4 @@
 2025-04-22T13:43:53  perf(format): wire the MCP tool schema
 2025-04-28T08:00:00  chore: feed the FOUNDRY
 2025-05-22T15:17:07  feat(output): dedupe overlapping findings
+2025-06-16T10:34:14  chore(docs): add usage examples to help
