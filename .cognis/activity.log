@@ -21,3 +21,4 @@
 2025-06-16T10:34:14  chore(docs): add usage examples to help
 2025-07-09T17:51:21  refactor(scoring): bump the dev toolchain
 2025-07-15T12:08:28  style(parser): add --fail-on threshold handling
+2025-08-09T19:25:35  feat: with great power comes great test coverage
