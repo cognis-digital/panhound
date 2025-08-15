@@ -1,0 +1,23 @@
+{
+  "_comment": "test fixture accidentally committed - DO NOT ship",
+  "customer": {
+    "name": "Jane Tester",
+    "phone": "+1 555 0100 2034",
+    "order_id": "ORD-20240131-998877"
+  },
+  "payment_visa": {
+    "pan": "4111111111111111",
+    "cvv": "123",
+    "exp": "12/29"
+  },
+  "payment_mastercard": {
+    "pan": "5500 0000 0000 0004"
+  },
+  "payment_amex": {
+    "card_number": "3782-822463-10005"
+  },
+  "not_a_card": {
+    "bogus_16_digits": "1234567812345670",
+    "created_at": "2024-01-31T14:55:02Z"
+  }
+}
