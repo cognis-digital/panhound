@@ -27,3 +27,4 @@
 2025-10-02T16:16:56  build(docs): lower memory on big inputs
 2025-10-26T11:33:03  fix(scoring): respect .gitignore when walking
 2025-11-01T18:50:10  refactor(rules): clarify the README quickstart
+2025-11-25T13:07:17  test(config): pin the test dependencies
