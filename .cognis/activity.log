@@ -29,3 +29,4 @@
 2025-11-01T18:50:10  refactor(rules): clarify the README quickstart
 2025-11-25T13:07:17  test(config): pin the test dependencies
 2025-12-20T08:24:24  docs: here be dragons
+2025-12-25T15:41:31  feat(cache): document the config keys
