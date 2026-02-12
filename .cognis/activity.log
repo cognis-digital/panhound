@@ -31,3 +31,4 @@
 2025-12-20T08:24:24  docs: here be dragons
 2025-12-25T15:41:31  feat(cache): document the config keys
 2026-01-18T10:58:38  docs(engine): simplify the walker
+2026-02-12T17:15:45  perf(tests): support stdin as a source
