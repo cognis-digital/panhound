@@ -34,3 +34,4 @@
 2026-02-12T17:15:45  perf(tests): support stdin as a source
 2026-02-18T12:32:52  style(scan): assert exit codes in tests
 2026-03-14T19:49:59  test: add edge case
+2026-04-07T14:06:06  chore(io): normalize unicode before matching
