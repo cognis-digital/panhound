@@ -36,3 +36,4 @@
 2026-03-14T19:49:59  test: add edge case
 2026-04-07T14:06:06  chore(io): normalize unicode before matching
 2026-04-13T09:23:13  refactor(ci): add a regression fixture
+2026-05-07T16:40:20  test(format): trim whitespace in parsed fields
