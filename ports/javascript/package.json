@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/panhound",
+  "version": "0.2.0",
+  "description": "JavaScript port of panhound (Cognis Neural Suite)",
+  "bin": {
+    "panhound": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
