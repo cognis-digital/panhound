@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: panhound, labels: { app: panhound } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: panhound } }
+  template:
+    metadata: { labels: { app: panhound } }
+    spec:
+      containers:
+        - name: panhound
+          image: ghcr.io/cognis-digital/panhound:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: panhound }
+spec:
+  selector: { app: panhound }
+  ports: [{ port: 80, targetPort: 8000 }]
