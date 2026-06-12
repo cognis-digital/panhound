@@ -4,7 +4,6 @@ import os
 import subprocess
 import sys
 
-import pytest
 
 from panhound import (
     TOOL_NAME,

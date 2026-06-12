@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-panhound
+pip install "git+https://github.com/cognis-digital/panhound.git"
 panhound scan .            # → prioritized findings in seconds
 ```
 
@@ -52,7 +52,7 @@ PCI-DSS Req 3 has no good open-source 'cardholder data leak' scanner; Luhn + BIN
 ## Quick start
 
 ```bash
-pip install cognis-panhound
+pip install "git+https://github.com/cognis-digital/panhound.git"
 panhound --version
 panhound scan .                       # scan current project
 panhound scan . --format json         # machine-readable
