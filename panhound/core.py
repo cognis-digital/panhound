@@ -36,9 +36,14 @@ _CANDIDATE_RE = re.compile(
 
 # CVV: a standalone 3-4 digit number that is *labeled* as a security code.
 # We only flag labeled CVVs to avoid matching every 3-digit number on earth.
+# The pattern handles both plain-text labels (cvv: 123) and JSON key-value
+# format ("cvv": "123") by making surrounding quotes on the keyword optional
+# and requiring at least one separator (: or =) between keyword and value.
 _CVV_RE = re.compile(
-    r"(?i)\b(cvv2?|cvc2?|cvn|cid|security[\s_-]?code|card[\s_-]?verification)\b"
-    r"\s*[:=]?\s*[\"']?(\d{3,4})[\"']?"
+    r"(?i)"
+    r"[\"']?(cvv2?|cvc2?|cvn|cid|security[\s_-]?code|card[\s_-]?verification)[\"']?"
+    r"\s*[:=]\s*"
+    r"[\"']?(\d{3,4})[\"']?"
 )
 
 _DEFAULT_SKIP_DIRS = {".git", ".hg", ".svn", "node_modules", "__pycache__",

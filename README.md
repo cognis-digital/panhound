@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/panhound.git"
 panhound scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+PANHOUND scans your code files, logs, and configuration for accidentally committed credit card numbers and security codes (CVVs). It validates each number using the industry-standard Luhn checksum and recognizes Visa, Mastercard, Amex, and other major card brands, so it only alerts on real card data rather than random numbers that happen to look similar. You run it like a spell-checker — point it at a folder and it lists exactly which files and lines contain leaked card data, with the numbers masked so the output itself is safe to share. It is aimed at developers and security teams who want a quick, automated way to catch payment card leaks before they reach production or fail a PCI audit.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why panhound?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -49,6 +55,42 @@ PCI-DSS Req 3 has no good open-source 'cardholder data leak' scanner; Luhn + BIN
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`panhound` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/panhound/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/panhound/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/panhound.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/panhound.git"  # uv
+pip install "git+https://github.com/cognis-digital/panhound.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/panhound.git
+cd panhound && pip install .
+```
+
+Then run:
+```sh
+panhound --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash

@@ -30,7 +30,7 @@ def test_luhn():
     assert luhn_valid("4111111111111111")      # visa test number
     assert luhn_valid("5500000000000004")      # mastercard test number
     assert luhn_valid("378282246310005")       # amex test number
-    assert not luhn_valid("1234567812345670")   # fails checksum
+    assert not luhn_valid("1234567812345678")   # fails checksum
     assert not luhn_valid("")
     assert not luhn_valid("abc")
 
