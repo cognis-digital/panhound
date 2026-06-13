@@ -20,6 +20,41 @@ pip install cognis-panhound
 panhound scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+1. Install the CLI (Python 3.9+):
+
+   ```bash
+   pip install git+https://github.com/cognis-digital/panhound.git
+   ```
+
+2. Scan code, logs, and fixtures for leaked cardholder data:
+
+   ```bash
+   panhound scan ./src ./logs
+   ```
+
+3. Get machine-readable output for triage tooling:
+
+   ```bash
+   panhound scan ./src --format json > pan-findings.json
+   ```
+
+4. Narrow the scan (e.g. PAN-only, suppress noise) and read the exit code:
+
+   ```bash
+   panhound scan ./logs --no-cvv --quiet; echo "exit=$?"
+   ```
+
+5. Gate a pipeline on leaked cardholder data:
+
+   ```yaml
+   - name: cardholder-data scan
+     run: |
+       pip install git+https://github.com/cognis-digital/panhound.git
+       panhound scan . --format json
+   ```
+
 ## Contents
 
 - [Why panhound?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
