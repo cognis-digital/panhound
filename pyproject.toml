@@ -34,3 +34,6 @@ panhound = "panhound.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["panhound"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
