@@ -31,7 +31,7 @@ def test_luhn():
     assert luhn_valid("4111111111111111")      # visa test number
     assert luhn_valid("5500000000000004")      # mastercard test number
     assert luhn_valid("378282246310005")       # amex test number
-    assert not luhn_valid("1234567812345670")   # fails checksum
+    assert not luhn_valid("4111111111111112")  # valid PAN with last digit changed -> fails checksum
     assert not luhn_valid("")
     assert not luhn_valid("abc")
 
@@ -66,7 +66,7 @@ def test_scan_text_basic():
 def test_decoys_not_flagged():
     # phone number, order id, luhn-invalid 16-digit -> no findings
     text = ("phone +1 555 0100 2034 order ORD-20240131-998877 "
-            "bogus 1234567812345670 ts 2024-01-31T14:55:02Z")
+            "bogus 1234567812345678 ts 2024-01-31T14:55:02Z")
     findings = scan_text(text)
     assert findings == []
 
@@ -79,7 +79,7 @@ def test_scan_demo_file():
     assert brands == ["amex", "mastercard", "visa"]
     assert len(cvvs) == 1
     # nothing in the demo's decoy block should be flagged
-    assert all("1234567812345670" not in f.context for f in findings)
+    assert all("1234567812345678" not in f.context for f in findings)
 
 
 def test_cli_exit_code_and_json(capsys):

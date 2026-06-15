@@ -5,10 +5,10 @@
 `demos/01-basic/checkout_fixture.json` is a realistic-looking test fixture of
 the kind that quietly ends up committed to a repo. It contains:
 
-- A **Visa** PAN (`4111111111111111`) - a valid Luhn test number.
-- A **Mastercard** PAN written with spaces (`5500 0000 0000 0004`).
-- An **Amex** PAN written with hyphens (`3782-822463-10005`).
-- A labeled **CVV** (`"cvv": "123"`).
+- A **Visa** PAN (`4111 11XX XXXX 1111`) - a valid Luhn test number.
+- A **Mastercard** PAN written with spaces (`5500 00XX XXXX 0004`).
+- An **Amex** PAN written with hyphens (`3782-82XXXX-0005`).
+- A labeled **CVV** (`"cvv": "1XX"`).
 - Decoys that must NOT be flagged: a phone number, an order id, a timestamp,
   and an invalid 16-digit number that fails Luhn.
 

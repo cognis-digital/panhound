@@ -38,7 +38,7 @@ _CANDIDATE_RE = re.compile(
 # We only flag labeled CVVs to avoid matching every 3-digit number on earth.
 _CVV_RE = re.compile(
     r"(?i)\b(cvv2?|cvc2?|cvn|cid|security[\s_-]?code|card[\s_-]?verification)\b"
-    r"\s*[:=]?\s*[\"']?(\d{3,4})[\"']?"
+    r"[\"']?\s*[:=]?\s*[\"']?(\d{3,4})[\"']?"
 )
 
 _DEFAULT_SKIP_DIRS = {".git", ".hg", ".svn", "node_modules", "__pycache__",
