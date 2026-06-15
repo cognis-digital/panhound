@@ -116,6 +116,8 @@ def _redact_line(line: str) -> str:
 
 def scan_text(text: str, path: str = "<text>") -> List[Finding]:
     """Scan a string and return a list of :class:`Finding`."""
+    if not isinstance(text, str):
+        raise TypeError("scan_text: text must be a str, got {}".format(type(text).__name__))
     findings: List[Finding] = []
     # Precompute line offsets for line/col mapping.
     line_starts = [0]

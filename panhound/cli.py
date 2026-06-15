@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from typing import List, Optional
 
@@ -106,6 +107,14 @@ def _render_json(findings: List[Finding]) -> str:
     return json.dumps(payload, indent=2)
 
 
+def _validate_paths(paths: List[str]) -> Optional[str]:
+    """Return an error message if any real path (not '-') does not exist."""
+    missing = [p for p in paths if p != "-" and not os.path.exists(p)]
+    if missing:
+        return "path(s) not found: {}".format(", ".join(missing))
+    return None
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
@@ -114,15 +123,31 @@ def main(argv: Optional[List[str]] = None) -> int:
         parser.print_help()
         return 2
 
-    findings: List[Finding] = []
-    if args.paths == ["-"] or "-" in args.paths:
-        text = sys.stdin.read()
-        findings.extend(scan_text(text, path="<stdin>"))
-        real_paths = [p for p in args.paths if p != "-"]
-        if real_paths:
-            findings.extend(scan_paths(real_paths))
-    else:
-        findings.extend(scan_paths(args.paths))
+    # Validate that all non-stdin paths actually exist before doing any work.
+    err = _validate_paths(args.paths)
+    if err:
+        print("panhound: error: {}".format(err), file=sys.stderr)
+        return 2
+
+    try:
+        findings: List[Finding] = []
+        if args.paths == ["-"] or "-" in args.paths:
+            text = sys.stdin.read()
+            findings.extend(scan_text(text, path="<stdin>"))
+            real_paths = [p for p in args.paths if p != "-"]
+            if real_paths:
+                findings.extend(scan_paths(real_paths))
+        else:
+            findings.extend(scan_paths(args.paths))
+    except KeyboardInterrupt:
+        print("\npanhound: interrupted", file=sys.stderr)
+        return 2
+    except OSError as exc:
+        print("panhound: I/O error: {}".format(exc), file=sys.stderr)
+        return 2
+    except Exception as exc:  # noqa: BLE001
+        print("panhound: unexpected error: {}".format(exc), file=sys.stderr)
+        return 2
 
     findings = _filter(findings, args.no_pan, args.no_cvv)
     findings.sort(key=lambda f: (f.path, f.line, f.col))
