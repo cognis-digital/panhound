@@ -20,6 +20,61 @@ pip install cognis-panhound
 panhound scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ panhound-emit --version
+panhound 0.1.0
+```
+
+```console
+$ panhound-emit --help
+usage: panhound [-h] [--version] command ...
+
+PANHOUND - scan code, logs and fixtures for leaked PANs (Luhn+BIN validated) and CVVs. A PCI cardholder-data leak scanner for use as a CI gate.
+
+positional arguments:
+  command
+    scan      scan files/dirs (or '-' for stdin) for leaked card data
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+
+Exit code is 0 when clean, 1 when leaks are found, 2 on usage error -- so it drops straight into a CI pipeline.
+```
+
+> Blocks above are real `panhound` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"findings": [
+    {
+        "id": "1234567890",
+        "title": "Suspicious Network Activity",
+        "description": "Possible malicious activity detected on network 192.168.1.100.",
+        "labels": ["network", "suspicious"],
+        "created_at": "2023-02-20T14:30:00Z"
+    },
+    {
+        "id": "2345678901",
+        "title": "Malware Detection",
+        "description": "Malware detected on system with IP address 192.168.2.100.",
+        "labels": ["malware", "infected"],
+        "created_at": "2023-02-21T10:45:00Z"
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. Install the CLI (Python 3.9+):

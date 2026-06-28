@@ -1,0 +1,15 @@
+$ panhound-emit --help
+
+usage: panhound [-h] [--version] command ...
+
+PANHOUND - scan code, logs and fixtures for leaked PANs (Luhn+BIN validated) and CVVs. A PCI cardholder-data leak scanner for use as a CI gate.
+
+positional arguments:
+  command
+    scan      scan files/dirs (or '-' for stdin) for leaked card data
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+
+Exit code is 0 when clean, 1 when leaks are found, 2 on usage error -- so it drops straight into a CI pipeline.
